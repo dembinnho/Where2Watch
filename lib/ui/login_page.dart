@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:where_to_watch/ui/forgotten_password.dart';
+import 'package:where_to_watch/ui/home_page.dart';
 import 'package:where_to_watch/ui/menu_page.dart';
 import 'package:where_to_watch/ui/register_page.dart';
 
@@ -47,253 +48,335 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Row(
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          const Text(
-                            'Where2Watch ',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 32),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 30),
-                            child: Column(
-                              children: [
-
-                                const Text(
-                                  'Search your movie, ',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 32),
-                                ),
-                                SizedBox(
-                                  height: MediaQuery.of(context).size.height * 0.01,
-                                ),
-                                const Text(
-                                  'wherever your are ! ',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 32),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.3,
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      const Text(
+                        'Where2Watch ',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 32),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Row(
+                        padding: const EdgeInsets.only(top: 30),
+                        child: Column(
                           children: [
                             const Text(
-                              "Already have an account?",
-                              style: TextStyle(color: Colors.black, fontSize: 18),
+                              'Search your movie, ',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 32),
                             ),
-
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: MediaQuery.of(context).size.height * 0.001,
-                                ),
-                                TextButton(
-                                    onPressed: () {},
-                                    child: TextButton(
-                                      child: const Text('Log in', style: TextStyle(decoration: TextDecoration.underline, color: Colors.blueAccent),),
-                                      onPressed: () {},
-                                    )),
-                              ],
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.01,
+                            ),
+                            const Text(
+                              'wherever your are ! ',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 32),
                             )
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.1,
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(35),
-                        child: Row(
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.3,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Row(
+                      children: [
+                        const Text(
+                          "Already have an account?",
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
+                        Column(
                           children: [
-                            SvgPicture.asset('facebook_logo.svg', width: 45,),
-                            SizedBox(width: MediaQuery.of(context).size.width * 0.01,),
-                            SvgPicture.asset('insta_logo.svg', width: 45,),
-                            SizedBox(width: MediaQuery.of(context).size.width * 0.01,),
-                            SvgPicture.asset('twitter_logo.svg', width: 45,),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                            maximumSize:
-                            Size(MediaQuery.of(context).size.width * 0.2, 58),
-                            minimumSize:
-                            Size(MediaQuery.of(context).size.width * 0.2, 58),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const MenuPage()));
-                          },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset('google_logo.svg', width: 30,),
-                              SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
-                              const Text(
-                                'Sign up with google',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16),
-                              ),
-                            ],
-                          )),
-                      Row(
-                        children: [
-                          Container(
-                              width: MediaQuery.of(context).size.width * 0.1,
-                              color: Colors.black,
-                              height: MediaQuery.of(context).size.height * 0.001),
-                          const Text(
-                            'or',
-                            style: TextStyle(color: Colors.black, fontSize: 22),
-                          ),
-                          Container(
-                              width: MediaQuery.of(context).size.width * 0.1,
-                              color: Colors.black,
-                              height: MediaQuery.of(context).size.height * 0.001),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Form(
-                        key: _formKey,
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: LastNameFormField(
-                                      firstNameController: _firstNameController,
-                                      focusFirstName: _focusFirstNameController),
-                                ),
-                                FirstNameFormField(
-                                    firstNameController: _lastNameController,
-                                    focusFirstName: _focusLastNameController)
-                              ],
-                            ),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.03,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.001,
                             ),
-                            EmailFormField(
-                                emailTextController: _emailTextController,
-                                focusEmail: _focusEmail),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.03,
-                            ),
-                            PasswordFormField(
-                                passwordTextController: _passwordTextController,
-                                focusPassword: _focusPassword),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.03,
-                            ),
-                            const ForgotPassword(),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.03,
-                            ),
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Checkbox(
-                                      value: valueFirst,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          valueFirst = !valueFirst;
-                                        });
-                                      }),
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 8.0),
-                                    child: Text('I agree to the Terms of Service', style: TextStyle(fontSize: 14),),
-                                  )
-                                ]),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.03,
-                            ),
-                            ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  elevation: 0,
-                                  backgroundColor:  Colors.purpleAccent,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0)),
-                                  maximumSize: Size(
-                                      MediaQuery.of(context).size.width * 0.2, 58),
-                                  minimumSize: Size(
-                                      MediaQuery.of(context).size.width * 0.2, 58),
-                                ),
-                                onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => const MenuPage()));
-                                },
-                                child: const Text(
-                                  'Sign me up !',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
+                            TextButton(
+                                onPressed: () {},
+                                child: TextButton(
+                                  child: const Text(
+                                    'Log in',
+                                    style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        color: Colors.blueAccent),
+                                  ),
+                                  onPressed: () {},
                                 )),
-                            SizedBox(width: MediaQuery.of(context).size.width * 0.2,),
-
-                            _isProcessing
-                                ? const CircularProgressIndicator()
-                                : Container()
                           ],
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(35),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          'facebook_logo.svg',
+                          width: 45,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.01,
+                        ),
+                        SvgPicture.asset(
+                          'insta_logo.svg',
+                          width: 45,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.01,
+                        ),
+                        SvgPicture.asset(
+                          'twitter_logo.svg',
+                          width: 45,
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
-            ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SignInWithGoogle(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  const SignInWithFacebook(),
+                  Row(
+                    children: [
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.1,
+                          color: Colors.black,
+                          height: MediaQuery.of(context).size.height * 0.001),
+                      const Text(
+                        'or',
+                        style: TextStyle(color: Colors.black, fontSize: 22),
+                      ),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.1,
+                          color: Colors.black,
+                          height: MediaQuery.of(context).size.height * 0.001),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: LastNameFormField(
+                                  firstNameController: _firstNameController,
+                                  focusFirstName: _focusFirstNameController),
+                            ),
+                            FirstNameFormField(
+                                firstNameController: _lastNameController,
+                                focusFirstName: _focusLastNameController)
+                          ],
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        EmailFormField(
+                            emailTextController: _emailTextController,
+                            focusEmail: _focusEmail),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        PasswordFormField(
+                            passwordTextController: _passwordTextController,
+                            focusPassword: _focusPassword),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        const ForgotPassword(),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Checkbox(
+                                  value: valueFirst,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      valueFirst = !valueFirst;
+                                    });
+                                  }),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8.0),
+                                child: Text(
+                                  'I agree to the Terms of Service',
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              )
+                            ]),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor: Colors.purpleAccent,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              maximumSize: Size(
+                                  MediaQuery.of(context).size.width * 0.2, 58),
+                              minimumSize: Size(
+                                  MediaQuery.of(context).size.width * 0.2, 58),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                            },
+                            child: const Text(
+                              'Sign me up !',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            )),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.2,
+                        ),
+                        _isProcessing
+                            ? const CircularProgressIndicator()
+                            : Container()
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ],
           ),
+        ),
+      ),
+    ));
+  }
+}
+
+class SignInWithGoogle extends StatelessWidget {
+  const SignInWithGoogle({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          maximumSize: Size(MediaQuery.of(context).size.width * 0.2, 58),
+          minimumSize: Size(MediaQuery.of(context).size.width * 0.2, 58),
+        ),
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => HomePage()));
+        },
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              'google_logo.svg',
+              width: 30,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.02,
+            ),
+            const Text(
+              'Sign up with Google',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
+            ),
+          ],
+        ));
+  }
+}
+
+class SignInWithFacebook extends StatelessWidget {
+  const SignInWithFacebook({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          maximumSize: Size(MediaQuery.of(context).size.width * 0.2, 58),
+          minimumSize: Size(MediaQuery.of(context).size.width * 0.2, 58),
+        ),
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => HomePage()));
+        },
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              'facebook_logo.svg',
+              width: 30,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.02,
+            ),
+            const Expanded(
+              child: Text(
+                'Sign up with Facebook',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14),
+              ),
+            ),
+          ],
         ));
   }
 }
@@ -308,24 +391,20 @@ class SignUp extends StatelessWidget {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: Color.fromRGBO(214, 97, 255, 0.47),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0)),
-          maximumSize: Size(
-              MediaQuery.of(context).size.width * 0.2, 58),
-          minimumSize: Size(
-              MediaQuery.of(context).size.width * 0.2, 58),
+          backgroundColor: const Color.fromRGBO(214, 97, 255, 0.47),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          maximumSize: Size(MediaQuery.of(context).size.width * 0.2, 58),
+          minimumSize: Size(MediaQuery.of(context).size.width * 0.2, 58),
         ),
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const MenuPage()));
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => HomePage()));
         },
         child: const Text(
           'Sign me up !',
           style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 20),
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ));
   }
 }
