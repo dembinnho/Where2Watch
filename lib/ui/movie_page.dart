@@ -1,59 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:where_to_watch/models/movie.dart';
 import 'package:where_to_watch/search_field.dart';
-import 'package:where_to_watch/ui/all_page.dart';
-import 'package:where_to_watch/ui/amazon_page.dart';
-import 'package:where_to_watch/ui/disney_page.dart';
 import 'package:where_to_watch/ui/login_page.dart';
-import 'package:where_to_watch/ui/movie_page.dart';
-import 'package:where_to_watch/ui/netflix_page.dart';
 import 'package:where_to_watch/utils/image_handler.dart';
 import 'package:where_to_watch/widgets/all_button.dart';
 import 'package:where_to_watch/widgets/movie_button.dart';
 import 'package:where_to_watch/widgets/tv_show_button.dart';
 
-import '../widgets/movie_tile.dart';
-
-class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+class MoviePage extends StatefulWidget {
+  MoviePage(
+      {Key? key,
+      required this.moviePoster,
+      required this.movieName,
+      required this.movieDescription,
+      required this.movieYearRelease,
+      required this.durationMovie,
+      required this.rating,
+      required this.movieGenre,
+      required this.movieDirector,
+      required this.movieProductionCountry,
+      required this.movieAddedToNetflixDate,
+      required this.movieAvailability})
+      : super(key: key);
+  final String moviePoster;
+  final String movieYearRelease;
+  final String durationMovie;
+  final String movieName;
+  final String rating;
+  final String movieDescription;
+  final String movieGenre;
+  final String movieDirector;
+  final String movieProductionCountry;
+  final String movieAddedToNetflixDate;
+  final String movieAvailability;
   final ImageHandler imageHandler = ImageHandler();
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MoviePage> createState() => _MoviePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  String? dropdownvalue = 'Choose Platform';
-  String? dropdownCountryValue = 'USA';
-  String? dropdownGenre = 'Humour';
-
-  var itemsStream = [
-    'Choose Platform',
-    'Netflix',
-    'Amazon',
-    'DisneyPlus',
-  ];
-  var itemsCountry = [
-    'USA',
-    'France',
-    'Canada',
-    'Mexico',
-  ];
-  var itemsGenre = [
-    'Humour',
-    'Drama',
-    'Thriller',
-    'Young',
-  ];
+class _MoviePageState extends State<MoviePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -223,136 +216,131 @@ class _HomePageState extends State<HomePage> {
               color: const Color.fromRGBO(101, 190, 195, 1), // 101, 190, 195
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [AllButton(), MovieButton(), TvShowButton()],
-              ),
-            ),
-          ),
-          Center(
-            child: SizedBox(
-              height: 90, //MediaQuery.of(context).size.height * 0.1,
-              width: 1374,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    DropdownButton(
-                      value: dropdownvalue,
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      items: itemsStream.map((items) {
-                        return DropdownMenuItem(
-                            value: items,
-                            child: Text(items,
-                                style: const TextStyle(fontSize: 20)));
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownvalue = newValue;
-                          switch (dropdownvalue) {
-                            case 'Netflix':
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => NetflixPage()));
-                              break;
-                            case 'DisneyPlus':
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => DisneyPage()));
-                              break;
-                            case 'Amazon':
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => AmazonPage()));
-                              break;
-                            default:
-                              return;
-                          }
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.1,
-                    ),
-                    DropdownButton(
-                      value: dropdownCountryValue,
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      items: itemsCountry.map((items) {
-                        return DropdownMenuItem(
-                            value: items,
-                            child: Text(items,
-                                style: const TextStyle(fontSize: 20)));
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownCountryValue = newValue;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.1,
-                    ),
-                    DropdownButton(
-                      value: dropdownGenre,
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      items: itemsGenre.map((items) {
-                        return DropdownMenuItem(
-                            value: items,
-                            child: Text(items,
-                                style: const TextStyle(fontSize: 20)));
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownGenre = newValue;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 55,
-                        width: 200,
-                        padding: const EdgeInsets.all(16.0),
-                        color: const Color.fromRGBO(
-                            185, 237, 240, 1), // B9EDF0 185, 237, 240
-                        margin: const EdgeInsets.all(10),
-                        child: const Center(
-                          child: Text(
-                            "Filter",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  AllButton(),
+                  MovieButton(),
+                  TvShowButton(),
+                ],
               ),
             ),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.03,
           ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text('Most popular'),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child:
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              MovieTile(
-                movie: someoneGreat,
-              ),
-              MovieTile(
-                movie: simpsons,
-              ),
-              MovieTile(
-                movie: businessProposal,
-              ),
-            ]),
-          ),
-      ],
-    ),
-        ));
+          Expanded(
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    SizedBox(
+                        height: 300,
+                        width: 665,
+                        child: Image.asset(widget.moviePoster)),
+                    Text(
+                      widget.movieName,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.005,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 300,
+                  width: 450,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(widget.movieYearRelease),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.005,
+                          ),
+                          Text(widget.durationMovie),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.005,
+                          ),
+                          Text(widget.rating),
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      Text(widget.movieDescription),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            'Genres: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(widget.movieGenre)
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            'Director: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(widget.movieDirector)
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            'Production Country: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(widget.movieProductionCountry)
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            'Added to Netflix: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(widget.movieAddedToNetflixDate)
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            'Availability: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(widget.movieAvailability)
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

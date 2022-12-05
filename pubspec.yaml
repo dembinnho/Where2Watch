@@ -72,6 +72,16 @@ flutter:
     - assets/someone-great-poster.jpg
     - assets/simpsons.jpg
     - assets/business_proposal.jpg
+    - assets/wednesday.webp
+    - assets/the_crown.jpeg
+    - assets/one_tree.jpg
+    - assets/gladiator.png
+    - assets/green_mile.jpg
+    - assets/avatar.jpeg
+    - assets/hercules.jpeg
+    - assets/tdkr.jpeg
+    - assets/lord.jpeg
+    - assets/gossip.jpeg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
